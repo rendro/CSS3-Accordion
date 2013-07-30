@@ -1,0 +1,47 @@
+@base-fontsize: 16px;
+@base-lineheight: 24px;
+@acc-horizontal-height: 200px;
+@acc-horizontal-width: 100%;
+@acc-horizontal-handlerWidth: 10%;
+@acc-horizontal-sections: 5;
+@acc-horizontal-padding: 3%;
+
+.accordion{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	>dd{
+		height: 0;
+		overflow: hidden;
+		#acc-transition > .generic(.5s, height, ease-in-out);
+		&.notransition{
+			#acc-transition > .none;
+		}
+	}
+	&.horizontal{
+		padding: @acc-horizontal-padding;
+		font-size: 0;
+		line-height: 0;
+		> dd,
+		> dt{
+			display: inline-block;
+			vertical-align: top;
+			height: @acc-horizontal-height;
+			font-size: @base-fontsize;
+			line-height: @base-lineheight;
+		}
+		>dt{
+			width: @acc-horizontal-handlerWidth;
+			&.active{
+				+ dd{
+					width: (@acc-horizontal-width - @acc-horizontal-handlerWidth * @acc-horizontal-sections);
+					// subtract padding if px values are used and box-sizing: border-box is safe to safe to use
+					// width: (@width - @handlerWidth * @sections - 2 * @padding);
+				}
+			}
+		}
+		>dd{
+			height: @acc-horizontal-height;
+			width: 0;
+			#acc-transition > .generic(.5s, width, ease-in-out);
+		}
+	}
+}

@@ -1,0 +1,42 @@
+.acc-transition(@time:0s, @attr:all, @ease:ease-out) {
+	@style: @attr @time @ease;
+	-webkit-transition: @style;
+	-moz-transition: @style;
+	-ms-transition: @style;
+	-o-transition: @style;
+	transition: @style;
+}
+
+#acc-transition{
+	.none() {
+		.acc-transition();
+	}
+	.short() {
+		.acc-transition(.2s);
+	}
+	.generic(@time, @attr, @ease){
+		.acc-transition(@time, @attr, @ease);
+	}
+}
+
+.size(@w,@h){
+	width: @w;
+	height: @h;
+}
+.square(@s){
+	.size(@s,@s);
+}
+
+.acc-transform (@value) {
+	-webkit-transform: @value;
+	-moz-transform: @value;
+	-ms-transform: @value;
+	-o-transform: @value;
+	transform: @value;
+}
+
+#acc-transform{
+	.rotate(@v) {
+		.acc-transform(rotate(@v));
+	}
+}

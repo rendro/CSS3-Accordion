@@ -1,0 +1,15 @@
+* + html{
+	.accordion{
+		>dt{
+			position: static;
+		}
+		&.horizontal{
+			>dt,
+			>dd{
+				// css hack for inline block in IE7
+				zoom: 1;
+				*display: inline;
+			}
+		}
+	}
+}
