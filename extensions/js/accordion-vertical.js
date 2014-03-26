@@ -54,6 +54,9 @@ var Accordion = function($node) {
 			var $content = $node.next(contentSelector),
 				cssProperties = {};
 
+			// Set height explicitly to 0 so adding the active class afterwards won’t set
+			// it to auto if it’s declared so in css (to allow initially active content).
+			$content.css(cssProperty, 0);
 			$node.addClass(active);
 			if (transition) {
 				cssProperties[cssProperty] = getHeight($content);
